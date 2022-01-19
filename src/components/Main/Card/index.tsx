@@ -11,6 +11,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 import React, { useState } from "react";
+import ShoppingCart from "../../ShoppingCart";
 
 interface Nutrition {
   carbohydrates: number;
@@ -20,13 +21,14 @@ interface Nutrition {
   sugar: number;
 }
 
-interface Props {
+export interface Props {
   nutritions: Nutrition;
   id: number;
   genus: string;
   name: string;
   family: string;
   order: string;
+  img?: string;
 }
 
 const Card: React.FC<Props> = ({
@@ -36,6 +38,7 @@ const Card: React.FC<Props> = ({
   family,
   order,
   nutritions,
+  img,
 }) => {
   const [arr, setArr] = useState<Nutrition[]>([nutritions]);
 
@@ -49,6 +52,38 @@ const Card: React.FC<Props> = ({
     setOpen(false);
   };
 
+  const onClick = ({
+    id: id,
+    name: name,
+    genus: genus,
+    family: family,
+    order: order,
+    quantity: quantity,
+    img: img,
+  }: any) => {
+    let arr = JSON.parse(localStorage.getItem("cart") || "[]");
+    if (!(arr instanceof Array)) arr = [arr];
+
+    arr.push({
+      id: id,
+      name: name,
+      genus: genus,
+      family: family,
+      order: order,
+      img: img,
+    });
+    console.log(quantity);
+    const uniqueAddresses = Array.from(new Set(arr.map((a: any) => a.id))).map(
+      (id) => {
+        return arr.find((a: any) => a.id === id);
+      }
+    );
+    localStorage.setItem("cart", JSON.stringify(uniqueAddresses));
+
+    window.location.reload();
+    alert("Item sent to cart, access the cart to finalize the purchase");
+  };
+
   return (
     <Box m={5}>
       <Grid container spacing={2}>
@@ -58,7 +93,18 @@ const Card: React.FC<Props> = ({
               {/* <Grid item>
                 <Typography>{id}</Typography>
               </Grid> */}
-
+              <Grid item>
+                <Box
+                  component="img"
+                  sx={{
+                    height: 125,
+                    width: 250,
+                    maxHeight: { xs: 150, md: 75 },
+                    maxWidth: { xs: 200, md: 100 },
+                  }}
+                  src={img}
+                />
+              </Grid>
               <Grid item>
                 <Typography variant="h6">{name}</Typography>
               </Grid>
@@ -76,10 +122,21 @@ const Card: React.FC<Props> = ({
               </Grid>
               <Grid item>
                 <Button
+                  variant="outlined"
+                  onClick={() =>
+                    onClick({ id, name, family, genus, order, img })
+                  }
+                >
+                  Buy
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
                   sx={{ backgroundColor: "rgb(136,188,35)" }}
                   color="success"
                   variant="contained"
                   onClick={handleClickOpen}
+                  fullWidth
                 >
                   View Nutrition
                 </Button>
