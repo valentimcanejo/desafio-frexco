@@ -7,6 +7,9 @@ import {
   IconButton,
   styled,
   Stack,
+  TextField,
+  Card as CardM,
+  makeStyles,
 } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -72,23 +75,6 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginRight: drawerWidth,
-  }),
-}));
-
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -100,6 +86,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function Cards() {
   const [data, setData] = useState<any[]>([]);
+
   const [open, setOpen] = useState(false);
   const [images, setImages] = useState<any[]>([
     Apple,
@@ -134,17 +121,13 @@ export default function Cards() {
     watermelon,
   ]);
   const [sum, setSum] = useState(0);
+  const [query, setQuery] = useState("");
+
   useEffect(() => {
     axios.get(`https://www.fruityvice.com/api/fruit/all`).then((res) => {
       setData(res.data);
     });
   }, []);
-
-  // useEffect(() => {
-  //   console.log(data[0].img);
-  //   //data[0].img = Banana;
-  // }, []);
-  //data[0].img = Banana;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -213,7 +196,6 @@ export default function Cards() {
             color: "white",
             backgroundColor: "rgb(136,188,35)",
           }}
-          color="success"
           onClick={handleDrawerOpen}
         >
           <ShoppingCartIcon />
@@ -225,7 +207,7 @@ export default function Cards() {
         alignItems="center"
         justifyContent="center"
         container
-        spacing={0}
+        spacing={3}
         direction="column"
       >
         <Grid item>
@@ -237,21 +219,35 @@ export default function Cards() {
             information about all kind of fruits!
           </Typography>
         </Grid>
+        <Grid item>
+          <Typography variant="h6">Search for fruit:</Typography>
+          <TextField
+            type="text"
+            fullWidth
+            id="outlined-basic"
+            label="Search"
+            variant="outlined"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </Grid>
       </Grid>
 
       <Grid container spacing={3} alignItems="center" justifyContent="center">
-        {data.map((e, index) => (
-          <Card
-            key={index}
-            id={e.id}
-            order={e.order}
-            name={e.name}
-            genus={e.genus}
-            family={e.family}
-            nutritions={e.nutritions}
-            img={images[0 + index]}
-          />
-        ))}
+        {data.map((e, index) =>
+          e.name.toLowerCase().includes(query) ? (
+            <Card
+              key={index}
+              id={e.id}
+              order={e.order}
+              name={e.name}
+              genus={e.genus}
+              family={e.family}
+              nutritions={e.nutritions}
+              img={images[0 + index]}
+            />
+          ) : null
+        )}
       </Grid>
     </Box>
   );

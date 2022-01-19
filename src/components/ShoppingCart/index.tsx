@@ -1,10 +1,18 @@
-import { Box, Grid, Typography, Paper, IconButton } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  Paper,
+  IconButton,
+  Button,
+} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Props } from "../Main/Card/index";
+import { Link } from "react-router-dom";
 
 const ShoppingCart = () => {
   const [arr, setArr] = useState<any[]>([]);
@@ -19,7 +27,7 @@ const ShoppingCart = () => {
   return (
     <Box>
       <DataGrid
-        style={{ height: 600, width: "100%" }}
+        style={{ height: 400, width: "100%" }}
         columns={[
           { field: "id", headerName: "ID" },
           { field: "name", headerName: "Name" },
@@ -34,6 +42,18 @@ const ShoppingCart = () => {
           family: a.family,
         }))}
       />
+      <Box
+        style={{ marginTop: "30px" }}
+        justifyContent="center"
+        alignItems="center"
+        textAlign="center"
+      >
+        <Link style={{ textDecoration: "none" }} to="/purchase">
+          <Button variant="contained" color="success">
+            Purchase
+          </Button>
+        </Link>
+      </Box>
     </Box>
   );
 };

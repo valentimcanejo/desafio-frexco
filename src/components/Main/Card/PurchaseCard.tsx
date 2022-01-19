@@ -31,7 +31,7 @@ export interface Props {
   img?: string;
 }
 
-const Card: React.FC<Props> = ({
+const PurchaseCard: React.FC<Props> = ({
   id,
   genus,
   name,
@@ -92,8 +92,8 @@ const Card: React.FC<Props> = ({
           <Paper sx={{ padding: "50px" }}>
             <Grid container spacing={1} direction="column">
               {/* <Grid item>
-                <Typography>{id}</Typography>
-              </Grid> */}
+                  <Typography>{id}</Typography>
+                </Grid> */}
               <Grid item>
                 {img ? (
                   <Box
@@ -123,16 +123,7 @@ const Card: React.FC<Props> = ({
               <Grid item>
                 <Typography variant="body2">Order: {order}</Typography>
               </Grid>
-              <Grid item>
-                <Button
-                  variant="outlined"
-                  onClick={() =>
-                    onClick({ id, name, family, genus, order, img, nutritions })
-                  }
-                >
-                  Buy
-                </Button>
-              </Grid>
+
               <Grid item>
                 <Button
                   sx={{ backgroundColor: "rgb(136,188,35)" }}
@@ -204,4 +195,4 @@ const Card: React.FC<Props> = ({
   );
 };
 
-export default Card;
+export default PurchaseCard;
