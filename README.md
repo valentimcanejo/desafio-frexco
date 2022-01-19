@@ -1,46 +1,59 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<img src="https://i.imgur.com/xP2Lpqp.png" width="300px" height="100px"/>
 
-In the project directory, you can run:
+<h1 align="center"> Desafio Frexco </h1>
 
-### `yarn start`
+<p align="justify"> Este desafio se trata de fazer uma aplicação React(utilizando TypeScript), além de Material UI para o design, <b>a aplicação ainda não foi finalizada</b>, tendo sido iniciada há 5 horas. </p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img src="https://img.shields.io/badge/react-17.0.2-blue"/>  <img src="https://img.shields.io/badge/axios-0.24.0-blueviolet"/> <img src="https://img.shields.io/badge/typescript-4.5.3-9cf"/>  <img src="https://img.shields.io/badge/%40mui%2Fmaterial-5.2.3-blue"/>
 
-### `yarn test`
+<h2>Status do projeto: 80%</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   * <b>Integração com API do Fruityvice. :heavy_check_mark:</b> 
+   * <b>Sistema de grid mostrando todas as frutas com suas respectivas informações.</b> :heavy_check_mark:
+   * <b>Sistema de Carrinho.</b> :heavy_check_mark:
+   * <b>Rotas:</b> Em construção...  🚧
+   * <b>Simulação de compra finalizada:</b> Em construção...  🚧
+   * <b>Deploy no FireBase:</b> Em construção...  🚧
 
-### `yarn build`
+<h2>Tecnologias Utilizadas</h2>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!--ts-->
+   * React:heavy_check_mark:
+   * Typescript:heavy_check_mark:
+   * Material UI:heavy_check_mark:
+   
+<!--te-->
+<h2>Como as tecnologias foram utilizadas?</h2>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A aplicação foi feita com React e Typescript, o design das páginas foram feitos a partir do MUI(Material UI), utilizando ao máximo sua documentação.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2>Pré-requisitos</h2>
 
-### `yarn eject`
+Antes de começar, você vai precisar ter instalado em sua máquina algum gerenciador de pacotes, seja o [Npm](https://www.npmjs.com) ou o [Yarn](https://yarnpkg.com).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!--te-->
+### Instalação
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+# Clone este repositório
+$ git clone https://github.com/valentimcanejo/desafio-frexco.git
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Acesse a pasta do projeto no terminal/cmd
+$ cd desafio-frexco
 
-## Learn More
+# Use um destes comandos para instalar as dependências
+$ npm install 
+ou
+$ yarn install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Use um destes comandos para iniciar a aplicação
+$ npm start 
+ou
+$ yarn start
+# O servidor inciará na porta:3000
+```
