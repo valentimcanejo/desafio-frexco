@@ -14,10 +14,10 @@
    * <b>Integração com API do Fruityvice. :heavy_check_mark:</b> 
    * <b>Sistema de grid mostrando todas as frutas com suas respectivas informações.</b> :heavy_check_mark:
    * <b>Sistema de Carrinho.</b> :heavy_check_mark:
-   * <b>Rotas:</b> :heavy_check_mark:
-   * <b>Simulação de compra finalizada:</b> :heavy_check_mark:
-   * <b>Refatorar código:</b>  :heavy_check_mark:
-   * <b>Deploy no FireBase:</b> :heavy_check_mark:
+   * <b>Rotas.  </b> :heavy_check_mark:
+   * <b>Simulação de compra. </b> :heavy_check_mark:
+   * <b>Refatorar código. </b>  :heavy_check_mark:
+   * <b>Deploy no FireBase. </b> :heavy_check_mark:
 
 <h2>Tecnologias Utilizadas</h2>
 
