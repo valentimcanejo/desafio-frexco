@@ -4,7 +4,7 @@
 
 <h1 align="center"> Desafio Frexco </h1>
 
-<p align="justify"> Este desafio se trata de fazer uma aplicação React(utilizando TypeScript), além de Material UI para o design.
+<p align="justify"> Este desafio se trata de fazer uma aplicação React(utilizando TypeScript, além de Material UI para o design.), de uma loja de frutas, consumindo uma API da "Fruityvice", onde possui uma lista de frutas com informações adicionais das mesmas. Além disso a aplicação possui um sistema de carrinho de compras com uma simulação de compra.
 
 <h3>Projeto no Firebase: https://desafio-frexco.web.app/</h2>
 
