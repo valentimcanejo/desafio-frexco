@@ -1,24 +1,12 @@
-import {
-  Box,
-  Grid,
-  Typography,
-  Paper,
-  IconButton,
-  Button,
-} from "@mui/material";
+import { Box, Grid, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import { Props } from "../Main/Card/index";
+
 import { Link } from "react-router-dom";
 
 const ShoppingCart = () => {
   const [arr, setArr] = useState<any[]>([]);
-  const [sum, setSum] = useState(1);
-  const [cartItems, setCartItems] = useState([] as Props[]);
-  //const [images, setImages] = useState<any[]>([arr[0].img]);
 
   useEffect(() => {
     setArr(JSON.parse(localStorage.getItem("cart") || "[]"));
@@ -26,34 +14,50 @@ const ShoppingCart = () => {
 
   return (
     <Box>
-      <DataGrid
-        style={{ height: 400, width: "100%" }}
-        columns={[
-          { field: "id", headerName: "ID" },
-          { field: "name", headerName: "Name" },
-          {
-            field: "family",
-            headerName: "Family",
-          },
-        ]}
-        rows={arr.map((a, index) => ({
-          id: a.id,
-          name: a.name,
-          family: a.family,
-        }))}
-      />
-      <Box
-        style={{ marginTop: "30px" }}
+      <Grid
+        container
         justifyContent="center"
         alignItems="center"
-        textAlign="center"
+        direction="column"
+        spacing={0}
       >
-        <Link style={{ textDecoration: "none" }} to="/purchase">
-          <Button variant="contained" color="success">
-            Purchase
-          </Button>
-        </Link>
-      </Box>
+        <Grid item>
+          <DataGrid
+            style={{ height: 400, width: "100%" }}
+            columns={[
+              { field: "id", headerName: "ID" },
+              { field: "name", headerName: "Name" },
+
+              {
+                field: "price",
+                headerName: "Price $",
+              },
+            ]}
+            rows={arr.map((a, index) => ({
+              id: a.id,
+              name: a.name,
+
+              price: a.price,
+            }))}
+          />
+        </Grid>
+        <Grid item>
+          <Box
+            style={{ marginTop: "30px" }}
+            justifyContent="center"
+            alignItems="center"
+            textAlign="center"
+          >
+            {arr.length !== 0 ? (
+              <Link style={{ textDecoration: "none" }} to="/purchase">
+                <Button variant="contained" color="success">
+                  Purchase
+                </Button>
+              </Link>
+            ) : null}
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

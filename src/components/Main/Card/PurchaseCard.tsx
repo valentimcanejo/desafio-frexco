@@ -10,8 +10,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import React, { useState } from "react";
-import ShoppingCart from "../../ShoppingCart";
+import React, { useEffect, useState } from "react";
 
 export interface Nutrition {
   carbohydrates: number;
@@ -28,16 +27,15 @@ export interface Props {
   name: string;
   family: string;
   order: string;
+  price: number;
   img?: string;
 }
 
 const PurchaseCard: React.FC<Props> = ({
-  id,
-  genus,
   name,
-  family,
-  order,
+
   nutritions,
+  price,
   img,
 }) => {
   const [arr, setArr] = useState<Nutrition[]>([nutritions]);
@@ -50,39 +48,6 @@ const PurchaseCard: React.FC<Props> = ({
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const onClick = ({
-    id: id,
-    name: name,
-    genus: genus,
-    family: family,
-    order: order,
-    nutritions: nutritions,
-    img: img,
-  }: any) => {
-    let arr = JSON.parse(localStorage.getItem("cart") || "[]");
-    if (!(arr instanceof Array)) arr = [arr];
-
-    arr.push({
-      id: id,
-      name: name,
-      genus: genus,
-      family: family,
-      order: order,
-      nutritions: nutritions,
-      img: img,
-    });
-
-    const uniqueAddresses = Array.from(new Set(arr.map((a: any) => a.id))).map(
-      (id) => {
-        return arr.find((a: any) => a.id === id);
-      }
-    );
-    localStorage.setItem("cart", JSON.stringify(uniqueAddresses));
-
-    window.location.reload();
-    alert("Item sent to cart, access the cart to finalize the purchase");
   };
 
   return (
@@ -108,20 +73,13 @@ const PurchaseCard: React.FC<Props> = ({
                   />
                 ) : null}
               </Grid>
+
               <Grid item>
                 <Typography variant="h6">{name}</Typography>
               </Grid>
 
               <Grid item>
-                <Typography variant="body2">Genus: {genus}</Typography>
-              </Grid>
-
-              <Grid item>
-                <Typography variant="body2">Family: {family}</Typography>
-              </Grid>
-
-              <Grid item>
-                <Typography variant="body2">Order: {order}</Typography>
+                <Typography variant="body2">Price: {price}</Typography>
               </Grid>
 
               <Grid item>

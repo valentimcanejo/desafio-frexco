@@ -47,9 +47,7 @@ import raspberry from "../../../assets/raspberry.jpg";
 import strawberry from "../../../assets/strawberry.jpg";
 import tomato from "../../../assets/tomato.jpg";
 import watermelon from "../../../assets/watermelon.jpg";
-
-type Anchor = "right";
-
+import SearchIcon from "@mui/icons-material/Search";
 const drawerWidth = 500;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
@@ -71,15 +69,11 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   }),
 }));
 
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
+
   ...theme.mixins.toolbar,
   justifyContent: "flex-start",
 }));
@@ -120,7 +114,12 @@ export default function Cards() {
     tomato,
     watermelon,
   ]);
-  const [sum, setSum] = useState(0);
+  const [prices, setPrices] = useState([
+    2.25, 1.5, 3.9, 1, 2.19, 0.81, 0.99, 0.67, 1.45, 1.8, 0.5, 2.26, 3.0, 1.98,
+    1.27, 0.58, 3.23, 2.99, 1.9, 2.87, 1.7, 0.89, 1.11, 1.43, 0.99, 2.9, 3.6,
+    1.76,
+  ]);
+
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -195,6 +194,9 @@ export default function Cards() {
             padding: "20px",
             color: "white",
             backgroundColor: "rgb(136,188,35)",
+            "&:hover": {
+              backgroundColor: "green",
+            },
           }}
           onClick={handleDrawerOpen}
         >
@@ -220,15 +222,20 @@ export default function Cards() {
           </Typography>
         </Grid>
         <Grid item>
-          <Typography variant="h6">Search for fruit:</Typography>
+          {/* <Typography sx={{ textAlign: "left" }} variant="h6">
+            Search for fruit:
+          </Typography> */}
           <TextField
             type="text"
             fullWidth
             id="outlined-basic"
-            label="Search"
+            label="Search Fruit"
             variant="outlined"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            InputProps={{
+              endAdornment: <SearchIcon />,
+            }}
           />
         </Grid>
       </Grid>
@@ -244,7 +251,8 @@ export default function Cards() {
               genus={e.genus}
               family={e.family}
               nutritions={e.nutritions}
-              img={images[0 + index]}
+              img={images[index]}
+              price={prices[index]}
             />
           ) : null
         )}

@@ -1,19 +1,8 @@
-import {
-  Box,
-  Grid,
-  Typography,
-  Paper,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from "@mui/material";
+import { Box, Grid, Typography, Paper, Button } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Card, { Nutrition } from "../Main/Card/index";
+
 import PurchaseCard from "../Main/Card/PurchaseCard";
 
 export default function PurchaseScreen() {
@@ -25,6 +14,7 @@ export default function PurchaseScreen() {
 
   const endPurchase = () => {
     localStorage.removeItem("cart");
+    alert("Purchase ended, thank you for buying our fruits :)");
   };
 
   return (
@@ -73,6 +63,7 @@ export default function PurchaseScreen() {
                   genus={e.genus}
                   family={e.family}
                   nutritions={e.nutritions}
+                  price={e.price}
                   img={e.img}
                 />
               ))}

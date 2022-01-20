@@ -11,7 +11,6 @@ import {
   DialogTitle,
 } from "@mui/material";
 import React, { useState } from "react";
-import ShoppingCart from "../../ShoppingCart";
 
 export interface Nutrition {
   carbohydrates: number;
@@ -29,6 +28,7 @@ export interface Props {
   family: string;
   order: string;
   img?: string;
+  price: number;
 }
 
 const Card: React.FC<Props> = ({
@@ -39,6 +39,7 @@ const Card: React.FC<Props> = ({
   order,
   nutritions,
   img,
+  price,
 }) => {
   const [arr, setArr] = useState<Nutrition[]>([nutritions]);
 
@@ -60,6 +61,8 @@ const Card: React.FC<Props> = ({
     order: order,
     nutritions: nutritions,
     img: img,
+
+    price: price,
   }: any) => {
     let arr = JSON.parse(localStorage.getItem("cart") || "[]");
     if (!(arr instanceof Array)) arr = [arr];
@@ -72,6 +75,7 @@ const Card: React.FC<Props> = ({
       order: order,
       nutritions: nutritions,
       img: img,
+      price: price,
     });
 
     const uniqueAddresses = Array.from(new Set(arr.map((a: any) => a.id))).map(
@@ -124,13 +128,27 @@ const Card: React.FC<Props> = ({
                 <Typography variant="body2">Order: {order}</Typography>
               </Grid>
               <Grid item>
+                <Grid item>
+                  <Typography variant="body2">Price: {price}$</Typography>
+                </Grid>
+              </Grid>
+              <Grid item>
                 <Button
                   variant="outlined"
                   onClick={() =>
-                    onClick({ id, name, family, genus, order, img, nutritions })
+                    onClick({
+                      id,
+                      name,
+                      family,
+                      genus,
+                      order,
+                      img,
+                      nutritions,
+                      price,
+                    })
                   }
                 >
-                  Buy
+                  Add to Cart
                 </Button>
               </Grid>
               <Grid item>

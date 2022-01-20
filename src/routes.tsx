@@ -4,6 +4,7 @@ import {
   Route,
   BrowserRouter as Router,
   Routes as RoutesA,
+  Navigate,
 } from "react-router-dom";
 
 import PurchaseScreen from "./components/PurchaseScreen";
@@ -25,7 +26,9 @@ const Routes = () => {
         <Route element={<Cards />} path="/" />
         {arr.length !== 0 ? (
           <Route element={<PurchaseScreen />} path="/purchase" />
-        ) : null}
+        ) : (
+          <Route path="*" element={<Navigate to="/" />} />
+        )}
       </RoutesA>
     </Router>
   );
