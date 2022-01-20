@@ -4,10 +4,18 @@
 
 <h1 align="center"> Desafio Frexco </h1>
 
-<p align="justify"> Este desafio se trata de fazer uma aplicação React(utilizando TypeScript), além de Material UI para o design, <b>a aplicação ainda não foi finalizada</b>, tendo sido iniciada há 5 horas. </p>
+<p align="justify"> Este desafio se trata de fazer uma aplicação React(utilizando TypeScript), além de Material UI para o design.
 
+<h3>Projeto no Firebase: https://desafio-frexco.web.app/</h2>
 
+<!--ts-->
+  
+   
+<!--te-->
+
+<!--ts-->
 <img src="https://img.shields.io/badge/react-17.0.2-blue"/>  <img src="https://img.shields.io/badge/axios-0.24.0-blueviolet"/> <img src="https://img.shields.io/badge/typescript-4.5.3-9cf"/>  <img src="https://img.shields.io/badge/%40mui%2Fmaterial-5.2.3-blue"/>
+<!--te-->
 
 <h2>Status do projeto: 100%</h2>
 
