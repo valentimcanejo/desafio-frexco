@@ -9,13 +9,14 @@
 
 <img src="https://img.shields.io/badge/react-17.0.2-blue"/>  <img src="https://img.shields.io/badge/axios-0.24.0-blueviolet"/> <img src="https://img.shields.io/badge/typescript-4.5.3-9cf"/>  <img src="https://img.shields.io/badge/%40mui%2Fmaterial-5.2.3-blue"/>
 
-<h2>Status do projeto: 80%</h2>
+<h2>Status do projeto: 95%</h2>
 
    * <b>Integração com API do Fruityvice. :heavy_check_mark:</b> 
    * <b>Sistema de grid mostrando todas as frutas com suas respectivas informações.</b> :heavy_check_mark:
    * <b>Sistema de Carrinho.</b> :heavy_check_mark:
-   * <b>Rotas:</b> Em construção...  🚧
-   * <b>Simulação de compra finalizada:</b> Em construção...  🚧
+   * <b>Rotas:</b> :heavy_check_mark:
+   * <b>Simulação de compra finalizada:</b> :heavy_check_mark:
+   * <b>Refatorar código:</b>  Em construção...  🚧
    * <b>Deploy no FireBase:</b> Em construção...  🚧
 
 <h2>Tecnologias Utilizadas</h2>
